@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+
+    <title>
+        {% block title %}
+            Prockit
+        {% endblock %}
+    </title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href='{% static "css/style.css" %}'>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+    <link href="http://fonts.googleapis.com/css?family=Lato:100,300,400,300italic" rel="stylesheet" type="text/css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<!--    <link rel="stylesheet" type="text/css" href="ionicons.min.css">-->
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" integrity="sha384-3AB7yXWz4OeoZcPbieVW64vVXEwADiYyAEhwilzWsLw+9FgqpyjjStpPnpBO8o8S" crossorigin="anonymous">
+
+    <!-- jQuery library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css"/>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css"/>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    {% block link %}
+
+    {% endblock %}
+</head>
+<body>
+    <header>
+        <nav>
+            <img class="logo" src="images/logo(1).png">
+            <p class="pro">Prockit</p>
+        <div class="menu">
+            <ul class="js--main-nav">
+            <li><a href="#">Projects</a></li>
+            <li><a href="#">Forums</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="#features">Features</a></li>
+            <li><a href="#login">Login</a></li>
+            <li><a href="register.html">Register</a></li>
+            </ul>
+            <a class="mobile-nav-icon js--nav-icon"><i class="fa fa-navicon"></i></a>
+
+        </div>
+        </nav>
+
+        {% block indexsignup %}
+
+        {% endblock %}
+    </header>
+    {% block body_block %}
+
+    {% endblock %}
+
+    <footer>
+            <div class="row">
+                <div class="col span-1-of-2">
+                    <ul class="footer-nav">
+                        <li><a href="#">2020 Prockit, Inc</a></li>
+                        <li><a href="#">Terms $ Conditions</a></li>
+                        <li><a href="#">Privacy</a></li>
+                        <li><a href="#">Site Map</a></li>
+                        <li><a href="#">Android App</a></li>
+                    </ul>
+                </div>
+                <div class="col span-1-of-2">
+                    <ul class="social-links">
+                        <li><a href="#"><i class="fab fa-facebook"></i></a></li>
+                        <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                        <li><a href="#"><i class="fab fa-google-plus"></i></a></li>
+                        <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+    <script type="text/javascript">
+
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+    <script type="text/javascript">
+
+
+        $(document).ready(function(){
+        $('.autoplay').slick({
+        autoplay: true,
+        autoplaySpeed: 2500,
+        slidesToShow:3,
+        pauseOnHover:true,
+        });
+    });
+
+        $(document).ready(function(){
+        $(".log").hover(function(){
+         $(".b1").fadeIn("slow");
+    });
+});
+        $(document).ready(function(){
+        $(".better").hover(function(){
+        $(".b4").slideDown("slow");
+    });
+});
+
+
+        $(window).on("scroll", function() {
+                if($(window).scrollTop()) {
+                    $('nav').addClass('black');
+                }
+
+                else {
+                    $('nav').removeClass('black');
+                }
+            });
+
+
+                $(document).ready(function(){
+
+                $('.js--nav-icon').click(function() {
+
+                    var nav = $('.js--main-nav');
+
+                    nav.slideToggle();
+
+                });
+
+                    })
+
+
+    </script>
+</body>
+</html>
