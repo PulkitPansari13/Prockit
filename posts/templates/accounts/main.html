@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Profile | {{username}}</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{% static 'css/profile.css' %}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+    
+    <link href="http://fonts.googleapis.com/css?family=Lato:100,300,400,300italic" rel="stylesheet" type="text/css">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" integrity="sha384-3AB7yXWz4OeoZcPbieVW64vVXEwADiYyAEhwilzWsLw+9FgqpyjjStpPnpBO8o8S" crossorigin="anonymous">
+
+    
+    
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</head>
+    
+
+
+<body>
+      <header>
+       <nav>
+            <img class="logo" src="{% static 'images/logo.png' %}">
+            <p class="pro">Prockit</p> 
+            
+        <div class="menu">
+            <ul class="js--main-nav">
+            <li><a href="#">Projects</a></li>
+            <li><a href="#">Forums</a></li>
+            
+            <li><a href="{% url 'logout' %}">Logout</a></li>
+            <a href="explore.html" class="navigation__link">
+                <i class="fa fa-compass fa-lg" style="color: white"></i>
+            </a>
+            </ul>
+            <a class="mobile-nav-icon js--nav-icon"><i class="fa fa-navicon"></i></a>
+            
+        </div>
+        </nav>
+    </header>
+   
+   
+    <main id="profile">
+        <div class="profile__header">
+            <div class="profile__column">
+                <img src='{{ profile_pic.url }}' alt="profile_pic"  />
+            </div>
+            <div class="profile__column">
+                <div class="profile__title">
+                    <h3 class="profile__username">{{ username }}</h3>
+                    {% if user.is_authenticated and user.username == username %}
+                    <a href="{% url %}">Edit profile</a>
+                    <i class="fa fa-cog fa-lg"></i>
+                    {% elif user.is_authenticated %}
+                    <a href="#">Follow</a>
+                    {% endif %}
+                </div>
+                <ul class="profile__stats">
+                    <li class="profile__stat">
+                        <span class="stat__number">{{ postcount }}</span> posts
+                    </li>
+                    <li class="profile__stat">
+                        <span class="stat__number">{{ followers }}</span> followers
+                    </li>
+                    <li class="profile__stat">
+                        <span class="stat__number">{{ following }}</span> following
+                    </li>
+                </ul>
+                <p class="profile__bio">
+<!--                    <span class="profile__full-name">-->
+<!--                        Henry Senorita-->
+<!--                    </span>-->
+                    {% if bio is not None %}
+                    {{ bio }}
+                    {% endif %}
+<!--                    <a href="#">example.com</a>-->
+                </p>
+            </div>
+        </div>
+    </main>
+
+    <section class="betters" id="projects">
+        <div class="container">
+            {% if allposts %}
+            <div class="row">
+                {% for post in allposts %}
+                <div class="col-lg-4 col-md-6 col-sm-6 col-xs-4 box">
+                    <div class="imgBox">
+                        {% if post.filetype1 == 'img' %}
+                        <img src="{{ post.file1.url }}" class="img-responsive" alt="project image">
+                        {% elif post.filetype1 == 'video' %}
+                        <video width="100%" height="100%" controls preload="auto">
+                            <source src="{{ post.file1.url }}">
+                            Video unsupported
+                        </video>
+                        {% else %}
+                            <img src="https://via.placeholder.com/250.webp?text=Image" class="img-responsive" alt="project image">
+                        {% endif %}
+                    </div>
+                    <div class="details">
+                        <div class="content">
+
+                            <i class="fa fa-heart"></i>
+                            {{ post.total_likes }}
+
+                            <i class="fa fa-comment"></i>
+                            {{ post.total_comments }}
+                        </div>
+                    </div>
+                    <div class="text1">
+                        <span>{{ post.title }}</span>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            {% else %}
+            <div class="row justify-content-center">
+                User hasn't shared any project
+            </div>
+            {% endif %}
+        </div>
+    </section>
+
+    <footer>
+        <div class="row">
+            <div class="col span-1-of-2">
+                <ul class="footer-nav">
+                    <li><a href="#">2020 Prockit, Inc</a></li>
+                    <li><a href="#">Terms $ Conditions</a></li>
+                    <li><a href="#">Privacy</a></li>
+                    <li><a href="#">Site Map</a></li>
+                    <li><a href="#">Android App</a></li>
+                </ul>
+            </div>
+            <div class="col span-1-of-2">
+                <ul class="social-links">
+                    <li><a href="#"><i class="fab fa-facebook-square"></i></a></li>
+                    <li><a href="#"><i class="fab fa-twitter-square"></i></a></li>
+                    <li><a href="#"><i class="fab fa-google-plus-square"></i></a></li>
+                    <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+     <script>
+
+     $(window).on("scroll", function() {
+                    if($(window).scrollTop()) {
+                        $('nav').addClass('black');
+                    }
+
+                    else {
+                        $('nav').removeClass('black');
+                    }
+                });
+
+
+                    $(document).ready(function(){
+
+                    $('.js--nav-icon').click(function() {
+
+                        var nav = $('.js--main-nav');
+
+                        nav.slideToggle();
+
+                    });
+
+                        })
+
+        </script>
+    
+</body>
+</html>

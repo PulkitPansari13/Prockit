@@ -1,5 +1,11 @@
-body {
+*{
+    margin: 0;
+    padding: 0;
     font-family: 'Lato', 'Arial', sans-serif;
+}
+
+body {
+    
     position: relative;
     width: 100%;
     height: 100%;
@@ -61,7 +67,7 @@ header {
 .profile__title .profile__username {
     margin-right: 25px;
     font-size: 32px;
-    font-weight: 300;
+    font-weight: 390;
 }
 
 .profile__title a {
@@ -94,6 +100,7 @@ header {
 
 .profile__stats .profile__stat {
     margin-right: 40px;
+    list-style-type: none;
 }
 
 .profile__stat .stat__number {
@@ -143,9 +150,17 @@ header {
     position: relative;
     object-fit: cover;
     object-position: center center;
-    padding-bottom: 30px;
+    padding-bottom: 10px;
 }
 
+.betters video {
+    width: 100%;
+    height: 330px;
+    position: relative;
+    object-fit: cover;
+    object-position: center center;
+    padding-bottom: 10px;
+}
 
 .betters .container .box .imgBox {
     position: relative;
@@ -160,6 +175,7 @@ header {
 .betters .container .box:hover .imgBox img {
     transform: scale(1.2);
 }
+
 
 .betters .container .box .details {
     position: absolute;
@@ -179,6 +195,7 @@ header {
 .betters .container .box .details .content {
     position: absolute;
     top: 50%;
+    left: 30%;
     transform: translateY(-50%);
     text-align: center;
     padding: 15px;
@@ -190,12 +207,48 @@ header {
 }
 
 
+.text1{
+    font-size: 28px;
+    font-weight: 400;
+    letter-spacing: 1.5px;
+    margin-bottom:30px;
+    color: #000;
+    position: relative;
+    animation: text 2s 1;
+    text-align: center;
+}
+.betters .container .box:hover .text1 {
+    transform: scaleY(1);
+    color: #cf6d17;
+    
+}
 
+@keyframes text {
+    0%{
+        color: black;
+        margin-bottom: -40px;
+    }
+     30%{
+        letter-spacing: 25px;
+        margin-bottom: -40px;
+    }
+    
+}
 
 /*------577px to 768px----------*/
 @media screen and (max-width: 768px) {
 
     .betters img {
+        width: 100%;
+        height: 300px;
+        margin-right: auto;
+        margin-left: auto;
+        display: block;
+        object-fit: fill;
+
+    }
+
+    .betters video {
         width: 100%;
         height: 300px;
         margin-right: auto;
