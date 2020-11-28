@@ -11,3 +11,11 @@ class UserCreateForm(UserCreationForm):
     class Meta:
         fields = ("username", "email", "password1", "password2")
         model = get_user_model()
+
+
+class UserEditForm(forms.ModelForm):
+    email = forms.EmailField(required=True)
+
+    class Meta:
+        fields = ("first_name", "last_name", "email", "bio",)
+        model = get_user_model()

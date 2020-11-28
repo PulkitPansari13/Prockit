@@ -1,0 +1,107 @@
+{% extends 'accounts/main.html' %}
+{% load widget_tweaks %}
+{% load static %}
+{% block static_css %}
+<link rel="stylesheet" href="{% static 'css/edit.css' %}">
+<style>
+
+    .filepond--root{
+        height: 15em;
+        width : 50%;
+    }
+    .filepond--credits{
+        display: none;
+    }
+</style>
+<link rel="stylesheet" href='{% static "css/filepond.min.css" %}'>
+<link href="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css" rel="stylesheet">
+
+{% endblock %}
+
+
+{% block body_block %}
+    <main id="edit-profile">
+        <div class="edit-profile__container">
+            <div class="edit-profile__header">
+                <div class="edit-profile__avatar-container">
+<!--                    <img src="" class="edit-profile__avatar" />-->
+                <b>USERNAME: </b>
+                </div>
+                <h4 class="edit-profile__username">{{ user.username }}</h4>
+            </div>
+            <form action="" class="edit-profile__form" method="post">
+                {% csrf_token %}
+                <div class="form__row">
+                    <label for="{{ form.first_name.id_for_label }}" class="form__label">First Name:</label>
+                    {% render_field form.first_name class='form_input' %}
+                      <div class="form-group has-errors text-danger small">
+                                {{form.first_name.errors}}
+                      </div>
+                </div>
+                <div class="form__row">
+                    <label for="{{ form.last_name.id_for_label }}" class="form__label">Last Name:</label>
+                    {% render_field form.last_name class='form_input' %}
+                      <div class="form-group has-errors text-danger small">
+                                {{form.last_name.errors}}
+                      </div>
+                </div>
+                <div class="form__row">
+                    <label for="{{ form.email.id_for_label }}" class="form__label">Email:</label>
+                    {% render_field form.email placeholder='Email Address' class='form__input' %}
+                      <div class="form-group has-errors text-danger small">
+                                {{form.email.errors}}
+                      </div>
+                </div>
+                <div class="form__row">
+                    <label for="{{ form.bio.id_for_label }}" class="form__label">Bio:</label>
+                    {% render_field form.bio style="resize:none;" rows="6" %}
+                      <div class="form-group has-errors text-danger small">
+                                {{form.bio.errors}}
+                      </div>
+                </div>
+                <div class="form__row">
+                    <label for="filepond" class="form__label">Profile_pic:</label>
+                    <input type="file" name="filepond">
+                </div>
+                <input type="submit" value="Submit">
+                <input type="button" class="btn btn-secondary" onclick="window.location.href='{% url 'posts:accounts_main' username=user.username %}';" value="Cancel" />
+            </form>
+        </div>
+    </main>
+        <script src="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.js"></script>
+        <script src="https://unpkg.com/filepond-plugin-file-validate-type/dist/filepond-plugin-file-validate-type.js"></script>
+        <script src='{% static "js/filepond.min.js" %}'></script>
+{% endblock %}
+
+{% block afer_body %}
+<script>
+
+FilePond.registerPlugin(FilePondPluginImagePreview);
+FilePond.registerPlugin(FilePondPluginFileValidateType);
+FilePond.setOptions({
+    server: {
+        url: 'http://localhost:8000/',
+        process: 'fp/process/',
+        patch: 'fp/patch/',
+        revert: 'fp/revert/',
+        fetch: 'fp/fetch/?target=http://localhost:8000/{{user.profile_pic.url}}',
+        load: 'fp/load/'
+    }
+});
+const inputElement = document.querySelector('input[type="file"]');
+
+// create a FilePond instance at the input element location
+const pond = FilePond.create( inputElement,{
+  allowMultiple: false,
+  acceptedFileTypes: ['image/*'],
+  files: [
+        {
+            // the server file reference
+            source: '{{user.profile_pic.url}}',
+
+
+        }
+    ]
+  });
+</script>
+{% endblock %}
