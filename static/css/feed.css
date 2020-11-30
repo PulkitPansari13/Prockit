@@ -3,18 +3,6 @@
     padding: 0;
     font-family: 'Lato', 'Arial', sans-serif;
 }
-body {
-    font-family: 'Lato', 'Arial', sans-serif;
-    position: relative;
-    width: 100%;
-    height: 100%;
-    margin: 0px;
-    padding: 0px;
-    overflow-x: hidden;
-    text-rendering: optimizeLegibility;
-    background-color: #f7f3f3 !important;
-}
-
 
 section {
     padding: 80px 0;
@@ -24,7 +12,7 @@ section {
 nav {
     position: fixed;
     width: 100%;
-    z-index: 9999;
+    z-index: 999;
     background-color: #555;
 }
 
@@ -79,12 +67,12 @@ nav ul li a:active{
 }
 
 .container{
-    width: 60% !important;
-    color: #c1b6b6;
-    display: block;
-    border:0.5px solid #c1b6b6;
-    margin-top: 25px;
-    height: auto;
+    /*width: 60% !important;*/
+    /*color: #c1b6b6;*/
+    /*display: block;*/
+    /*border:0.5px solid #c1b6b6;*/
+    /*margin-top: 25px;*/
+    /*height: auto;*/
 }
 
 .pro {
@@ -194,7 +182,17 @@ nav.black .logo {
 .post-content {
 display: block;
 text-decoration: none !important;
-/*color: black;*/
+color: black !important;
+}
+
+.post-content: hover{
+text-decoration: none !important;
+color: black !important;
+}
+
+.post-content: visited{
+text-decoration: none !important;
+color: black !important;
 }
 
 .t{
@@ -277,7 +275,6 @@ text-decoration: none !important;
  
 #h2{
     display: inline-block;
-    min-height: 70px;
 }
 #h1 img{
     max-height: 100%;
@@ -297,12 +294,11 @@ text-decoration: none !important;
 #h2 img{
     padding-top: 5px;
     max-height: 60%;
-    max-width: 60%;
+    max-width: 60;
     border-radius: 50%;
     display: block;
     margin-right: auto;
-    margin-left: auto;
-    margin-top: 10px;
+    margin-left: auto; 
 }
 #h2 p{
     padding-top: 20px;
@@ -549,14 +545,8 @@ text-decoration: none !important;
 
 #h21{
     display: inline-block;
-    height: 80px;
-    /*margin-bottom: 5px;*/
-}
-#commentinput{
-    width: 92%;
-    border: none;
-    outline: none;
-    border-style: none;
+    height: 100px;
+    margin-bottom: 5px;
 }
 #h21 img{
     padding-top: 5px;
@@ -571,21 +561,14 @@ text-decoration: none !important;
     float: right;
     font-size: 12px;
     color: black;
-    /*height: 100px;*/
-    max-height: 80px;
+    height: 100px;
     word-wrap: break-word;
     overflow-y: scroll;
     border: 0.5px solid #c1b6b6;
     margin-bottom: 5px;
-    padding: 0px;
-    -ms-overflow-style: none;
-  	scrollbar-width: none;
-}
-#h22::-webkit-scrollbar {
-  			display: none;
 }
 .b1{
-    /*display: none;*/
+    display: none;
 }
 
 
@@ -672,3 +655,421 @@ footer {
     color: #517fa4;
 }
 
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Lato', 'Arial', sans-serif;
+}
+
+body {
+    font-family: 'Lato', 'Arial', sans-serif;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+    overflow-x: hidden;
+    text-rendering: optimizeLegibility;
+    background-color: #f7f3f3 !important;
+}
+
+
+header {
+    height: 15vh;
+}
+
+
+nav {
+    position: fixed;
+    width: 100%;
+    z-index: 9999;
+    background-color: #555;
+}
+
+
+nav ul {
+    float: right;
+    margin: 0;
+    padding-right: 42px;
+    margin-top: 18px;
+    animation: slideNavLink 0.5s ease-out forwards;
+}
+
+nav ul li {
+    display: inline-block;
+    padding: 5px 25px;
+    list-style: none;
+    font-size: 18px;
+}
+
+nav ul li a:link,
+nav ul li a:visited {
+    padding: 8px 0;
+    text-decoration: none;
+    color: #fff;
+    text-transform: uppercase;
+    border-bottom: 2px solid transparent;
+    transition: border-bottom 0.2s;
+}
+
+nav ul li a:hover,
+nav ul li a:active {
+    border-bottom: 3px solid #e67e22;
+}
+
+
+
+
+.mobile-nav-icon {
+    float: right;
+    margin-top: 20px;
+    cursor: pointer;
+    display: none;
+}
+
+.mobile-nav-icon i {
+    font-size: 30px;
+    color: #fff;
+}
+
+
+
+
+
+
+
+.pro {
+    float: left;
+    font-size: 25px;
+    font-weight: bold;
+    margin-top: 16px;
+    color: #fff;
+}
+
+.logo {
+    height: 53px;
+    float: left;
+    margin: 12px 30px;
+    border-radius: 50%;
+}
+
+
+nav.black {
+    background: #0009;
+}
+
+nav.black .logo {
+    height: 48px;
+}
+
+/*768 to 991 */
+@media screen and (max-width: 991px) {
+    nav ul li {
+        display: inline-block;
+        padding: 5px 12px;
+        font-size: 15px;
+    }
+
+    .logo {
+        margin: 12px 15px;
+        border-radius: 50%;
+    }
+
+    .pro {
+        font-size: 22px;
+        margin: 18px;
+
+    }
+    
+
+}
+
+/* 577 to  768 */
+@media screen and (max-width: 768px) {
+    .mobile-nav-icon {
+        display: inline-block;
+        margin-right: 20px;
+        padding-top: 5px;
+    }
+
+    nav ul {
+        display: none;
+    }
+
+
+    nav ul {
+        margin-top: 33px;
+        float: left;
+        margin-left: 35px;
+    }
+
+    nav ul li {
+        display: block;
+        font-size: 15px;
+        padding: 2px 0;
+    }
+    
+
+    nav ul li a:link,
+    nav ul li a:visited {
+        display: block;
+    }
+
+    .logo {
+        margin: 15px 13px;
+    }
+
+
+}
+
+/* 0 to 576 */
+@media screen and (max-width:576px) {
+    .pro {
+        display: none;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+#explore {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 500px;
+}
+
+#explore .explore__users {
+    padding-left: 0px;
+    background-color: white;
+    border: 1px solid #e6e6e6;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 600px;
+}
+
+.explore__users .explore__user {
+
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #e6e6e6;
+}
+
+.explore__users .explore__user:last-child {
+    border: 0;
+}
+
+.explore__user .explore__avatar {
+    width: 50px;
+    border-radius: 50%;
+}
+
+.explore__user .explore__user-column {
+    display: flex;
+    align-items: center;
+}
+
+.explore__user .explore__info {
+    margin-left: 15px;
+}
+
+.explore__info .explore__username {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.explore__info .explore__full-name {
+
+    color: #999;
+}
+
+.explore__user-column button {
+    background-color: rgb(1, 126, 232);
+    color: white;
+    border: 0;
+    font-weight: 600;
+    padding: 5px 10px;
+    font-size: 14px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+
+
+.explore__user-column button:hover {
+    background-color: #449aea;
+    color: #000;
+    border-color: #3f99ed;
+}
+
+.explore__user-column:active {
+    opacity: 0.9;
+}
+
+
+
+
+
+@keyframes slideNavLink {
+    from {
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+
+
+.pro {
+    float: left;
+    font-size: 25px;
+    font-weight: bold;
+    margin-top: 20px;
+    color: #fff;
+}
+
+.logo {
+    height: 53px;
+    float: left;
+    margin: 12px 30px;
+    border-radius: 50%;
+}
+
+
+/*-----------FOOT----------------*/
+footer {
+    margin-top: 100px;
+    background-color: #333;
+    font-size: 12px;
+    height: 70px;
+    padding: 20px;
+}
+
+.footer-nav {
+    list-style: none;
+    float: left;
+}
+
+.social-links {
+    list-style: none;
+    float: right;
+}
+
+.footer-nav li,
+.social-links li {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+.footer-nav li:last-child,
+.social-links li:last-child {
+    margin-right: 0;
+}
+
+.footer-nav li a:link,
+.footer-nav li a:visited,
+.social-links li a:link,
+.social-links li a:visited {
+    text-decoration: none;
+    border: 0;
+    color: #888;
+    transition: color 0.2s;
+}
+
+.footer-nav li a:hover,
+.footer-nav li a:active {
+    color: #ddd;
+}
+
+.social-links li a:link,
+.social-links li a:visited {
+    font-size: 160%;
+}
+
+.fab.fa-facebook-square,
+.fab.fa-instagram,
+.fab.fa-google-plus-square,
+.fab.fa-twitter-square {
+    transition: color 0.2s;
+}
+
+.fab.fa-facebook-square:hover {
+    color: #3b5998;
+}
+
+.fab.fa-twitter-square:hover {
+    color: #00aced;
+}
+
+.fab.fa-google-plus-square:hover {
+    color: #dd4b39;
+}
+
+.fab.fa-instagram:hover {
+    color: #517fa4;
+}
+
+/*-------577px to 768px-----------*/
+@media screen and (max-width: 768px) {
+    footer {
+        height: 140px;
+        padding-top: 10px;
+        padding-bottom: 15px;
+    }
+
+    .footer-nav li,
+    .social-links li {
+        margin-right: 10px;
+        padding-bottom: 5px;
+    }
+
+    .footer-nav li {
+        display: block;
+    }
+}
+
+/*--------0px to 576px------------*/
+@media screen and (max-width:576px) {
+    footer {
+        font-size: 11px;
+    }
+
+    footer-nav li,
+    .social-links li {
+        margin-right: 7px;
+    }
+}
+
+
+
+@media screen and (min-width: 375px) and (max-width: 667px) {
+
+
+    #explore .explore__users {
+        margin-top: 80px;
+        width: 70%;
+    }
+
+    .explore__users .explore__user {
+        border: 0;
+        border-bottom: 1px solid #e6e6e6;
+    }
+
+}
+
+.left-post{
+    background-color: white !important;
+    margin-bottom: 25px;
+}

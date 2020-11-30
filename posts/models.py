@@ -9,7 +9,7 @@ from random import randint
 class User(AbstractUser):
     bio = models.TextField(max_length=250, blank=True, null=True)
     profile_pic = models.ImageField(upload_to='profile_pics', default='default_profile_pic' + str(randint(1,10)) + '.svg')
-    followers = models.ManyToManyField('self', through="UserFollow")
+    followers = models.ManyToManyField('self', through="UserFollow", symmetrical=False)
 
 
 class UserFollow(models.Model):
@@ -55,20 +55,49 @@ class Post(models.Model):
         return self.comments.count()
 
     def filetype1(self):
-        if self.file1 is not None:
+        if self.file1 is not None and self.file1 != '':
             name, extension = os.path.splitext(self.file1.name)
             extension = extension.lstrip('.')
             video_extentions = ['mp4', 'mov', 'mkv', 'ogg', 'webm', 'wmv', 'mpeg']
             img_extention = ['apng', 'png', 'avif', 'gif', 'jpg', 'jpeg', 'jfif', 'svg', 'webp']
-            print(extension)
             if extension in video_extentions:
                 return 'video'
             elif extension in img_extention:
                 return 'img'
+            else:
+                return None
         else:
             return None
 
+    def filetype2(self):
+        if self.file2 is not None and self.file2 != '':
+            name, extension = os.path.splitext(self.file2.name)
+            extension = extension.lstrip('.')
+            video_extentions = ['mp4', 'mov', 'mkv', 'ogg', 'webm', 'wmv', 'mpeg']
+            img_extention = ['apng', 'png', 'avif', 'gif', 'jpg', 'jpeg', 'jfif', 'svg', 'webp']
+            if extension in video_extentions:
+                return 'video'
+            elif extension in img_extention:
+                return 'img'
+            else:
+                return None
+        else:
+            return None
 
+    def filetype3(self):
+        if self.file3 is not None and self.file3 != '':
+            name, extension = os.path.splitext(self.file3.name)
+            extension = extension.lstrip('.')
+            video_extentions = ['mp4', 'mov', 'mkv', 'ogg', 'webm', 'wmv', 'mpeg']
+            img_extention = ['apng', 'png', 'avif', 'gif', 'jpg', 'jpeg', 'jfif', 'svg', 'webp']
+            if extension in video_extentions:
+                return 'video'
+            elif extension in img_extention:
+                return 'img'
+            else:
+                return None
+        else:
+            return None
 
     def __str__(self):
         return self.title

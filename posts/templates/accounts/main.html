@@ -39,11 +39,11 @@
             
         <div class="menu">
             <ul class="js--main-nav">
-            <li><a href="#">Projects</a></li>
-            <li><a href="#">Forums</a></li>
+            <li><a href="{% url 'posts:post_create' username=user.username %}">Add Project</li>
+<!--            <li><a href="#">Forums</a></li>-->
             
             <li><a href="{% url 'logout' %}">Logout</a></li>
-            <a href="explore.html" class="navigation__link">
+            <a href="{% url 'posts:feed' username=user.username %}" class="navigation__link">
                 <i class="fa fa-compass fa-lg" style="color: white"></i>
             </a>
             </ul>
@@ -66,7 +66,15 @@
                     <a href="{% url 'posts:accounts_edit' username=user.username %}">Edit profile</a>
                     <i class="fa fa-cog fa-lg"></i>
                     {% elif user.is_authenticated %}
-                    <a href="#">Follow</a>
+
+                    <a href="{% url 'posts:accounts_follow' username=username %}" id="follow-toggle">
+                        {% if isfollowing %}
+                        Unfollow
+                        {% else %}
+                        Follow
+                        {% endif %}
+                    </a>
+
                     {% endif %}
                 </div>
                 <ul class="profile__stats">
@@ -99,6 +107,7 @@
             <div class="row">
                 {% for post in allposts %}
                 <div class="col-lg-4 col-md-6 col-sm-12 col-xs-4 box">
+                    <a href="{% url 'posts:post_detail' username=username postid=post.id %}" class="post-content">
                     <div class="imgBox">
                         {% if post.filetype1 == 'img' %}
                         <img src="{{ post.file1.url }}" class="img-responsive" alt="project image">
@@ -124,7 +133,9 @@
                     <div class="text1">
                         <span>{{ post.title }}</span>
                     </div>
+                    </a>
                 </div>
+
                 {% endfor %}
             </div>
             {% else %}
@@ -170,17 +181,36 @@
                 });
 
 
-                    $(document).ready(function(){
-
-                    $('.js--nav-icon').click(function() {
-
+     $(document).ready(function(){
+         $('.js--nav-icon').click(function() {
                         var nav = $('.js--main-nav');
-
                         nav.slideToggle();
-
                     });
+         $('#follow-toggle').click(function(e){
+            e.preventDefault();
+            this_ = $(this);
+            let followurl = this_.attr('href');
+            $.ajax({
+            url: followurl,
+            method: 'GET',
+            data: {},
+            success: function(data){
+                if (data.followed && data.updated){
+                    $('#follow-toggle').text('Unfollow');
+                }
+                else if (! data.followed && data.updated){
+                    $('#follow-toggle').text('Follow');
+                }
+            },
+            error: function(error){
+                console.log(error);
+            }
+        });
 
-                        })
+          });
+
+     });
+
 
         </script>
     

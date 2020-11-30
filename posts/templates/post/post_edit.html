@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+{% load static %}
+{% load widget_tweaks %}
+<html lang="en">
+<head>
+    <title>Prockit</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/edit.css' %}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+    <link href="http://fonts.googleapis.com/css?family=Lato:100,300,400,300italic" rel="stylesheet" type="text/css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" integrity="sha384-3AB7yXWz4OeoZcPbieVW64vVXEwADiYyAEhwilzWsLw+9FgqpyjjStpPnpBO8o8S" crossorigin="anonymous">
+    <link rel="stylesheet" href='{% static "css/filepond.min.css" %}'>
+<link href="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css" rel="stylesheet">
+
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+    <style>
+        .filepond--root{
+        width : 50%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    </style>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+        <header>
+        <nav>
+            <img class="logo" src="{% static 'images/logo.png' %}">
+            <p class="pro"><a href="{% url 'index' %}">Prockit</a></p>
+        <div class="menu">
+            <ul class="js--main-nav">
+            <li><a href="{% url 'posts:post_create' username=user.username %}">Add Project</a></li>
+<!--            <li><a href="forum2.html">Forums</a></li>-->
+            <li><a href="{% url 'posts:accounts_main' username=user.username %}">Profile</a></li>
+            <li><a href="{% url 'logout' %}">Logout</a></li>
+            </ul>
+            <a class="mobile-nav-icon js--nav-icon"><i class="fa fa-navicon"></i></a>
+
+        </div>
+        </nav>
+      </header>
+        <main id="edit-profile">
+        <div class="edit-profile__container">
+            <div class="edit-profile__header">
+                <div class="edit-profile__avatar-container">
+                <b>New Project </b>
+                </div>
+            </div>
+            <form action="" class="edit-profile__form" method="post">
+                {% csrf_token %}
+                <div class="form__row">
+                    <label for="{{ form.title.id_for_label }}" class="form__label">Title:</label>
+                    {% render_field form.title class='form_input' %}
+                      <div class="form-group has-errors text-danger small">
+                                {{form.title.errors}}
+                      </div>
+                </div>
+                <div class="form__row">
+                    <label for="{{ form.description.id_for_label }}" class="form__label">Description: </label>
+                    {% render_field form.description class='form_input' %}
+                      <div class="form-group has-errors text-danger small">
+                                {{form.description.errors}}
+                      </div>
+                </div>
+                <div class="form__row">
+                    <label for="{{ form.code_link.id_for_label }}" class="form__label">Link to Source Code <small>(optional)</small>:</label>
+                    {% render_field form.code_link class='form__input' %}
+                      <div class="form-group has-errors text-danger small">
+                                {{form.email.errors}}
+                      </div>
+                </div>
+<!--                <div class="form__row">-->
+                    <input type="file" name="filepond" multiple required>
+<!--                </div>-->
+                <input type="submit" value="Submit">
+                <input type="button" class="btn btn-secondary" onclick="window.location.href='{% url 'posts:accounts_main' username=user.username %}';" value="Cancel" />
+            </form>
+        </div>
+    </main>
+        <script src="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.js"></script>
+        <script src="https://unpkg.com/filepond-plugin-file-validate-type/dist/filepond-plugin-file-validate-type.js"></script>
+        <script src='{% static "js/filepond.min.js" %}'></script>
+<footer>
+            <div class="row">
+                <div class="col span-1-of-2">
+                    <ul class="footer-nav">
+                        <li><a href="#">2020 Prockit, Inc</a></li>
+                        <li><a href="#">Terms $ Conditions</a></li>
+                        <li><a href="#">Privacy</a></li>
+                        <li><a href="#">Site Map</a></li>
+                        <li><a href="#">Android App</a></li>
+                    </ul>
+                </div>
+                <div class="col span-1-of-2">
+                    <ul class="social-links">
+                        <li><a href="#"><i class="fab fa-facebook"></i></a></li>
+                        <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                        <li><a href="#"><i class="fab fa-google-plus"></i></a></li>
+                        <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+    </footer>
+    <script src="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.js"></script>
+        <script src="https://unpkg.com/filepond-plugin-file-validate-type/dist/filepond-plugin-file-validate-type.js"></script>
+        <script src='{% static "js/filepond.min.js" %}'></script>
+<script>
+FilePond.registerPlugin(FilePondPluginImagePreview);
+FilePond.registerPlugin(FilePondPluginFileValidateType);
+FilePond.setOptions({
+    server: {
+        url: 'http://localhost:8000/',
+        process: 'fp/process/',
+        patch: 'fp/patch/',
+        revert: 'fp/revert/',
+        fetch: 'fp/fetch/?target=',
+        load: 'fp/load/'
+    }
+});
+const inputElement = document.querySelector('input[type="file"]');
+
+// create a FilePond instance at the input element location
+const pond = FilePond.create( inputElement,{
+
+  labelIdle: 'Drop or <span class="filepond--label-action"> Browse </span> your project media. Atleast 1, max 3.',
+  allowMultiple: true,
+  allowReorder: true,
+  maxFiles: 3,
+  required: true,
+  credits: false,
+  acceptedFileTypes: ['image/*', 'video/*'],
+  files: [
+        {% for url in posturls  %}
+        {
+            // the server file reference
+            source: '{{ url }}',
+
+
+        },
+        {% endfor %}
+    ]
+  });
+</script>
+</body>
+</html>

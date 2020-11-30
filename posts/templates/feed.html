@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Explore </title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- <link rel="stylesheet" href="css/explore.css"> -->
+    <link rel="stylesheet" href="{% static 'css/feed.css' %}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+    <link href="http://fonts.googleapis.com/css?family=Lato:100,300,400,300italic" rel="stylesheet" type="text/css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" integrity="sha384-3AB7yXWz4OeoZcPbieVW64vVXEwADiYyAEhwilzWsLw+9FgqpyjjStpPnpBO8o8S" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css"/>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css"/>
+
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+</head>
+
+<body>
+
+    <header>
+        <nav>
+            <img class="logo" src="{% static 'images/logo.png' %}">
+            <p class="pro">Prockit</p>
+
+            <div class="menu">
+                <ul class="js--main-nav">
+                    <li><a href="{% url 'posts:post_create' username=user.username %}">Add Project</li>
+<!--                    <li><a href="#">Forums</a></li>-->
+                    <li><a href="{% url 'posts:accounts_main' username=user.username %}">Profile</a></li>
+                    <li><a href="{% url 'logout' %}">Logout</a></li>
+
+                </ul>
+                <a class="mobile-nav-icon js--nav-icon"><i class="fa fa-navicon"></i></a>
+
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+    <div class="row">
+    	<div class="col-lg-8 col-md-8 col-sm-8 ">
+            {% if posts %}
+            {% for post in posts %}
+    		<div class="container left-post">
+            	{% with owner=post.user f1=post.filetype1 f2=post.filetype2 f3=post.filetype3 %}
+	            <div class="col-md-2 col-sm-2 col-xs-2" id="h2">
+	                    <a href="{% url 'posts:accounts_main' username=owner.username %}" style="text-decoration:none;">
+                            <img src= "{{ owner.profile_pic.url }}">
+                        </a>
+	            </div>
+	            <div class="col-md-10 col-sm-10 col-xs-10" id="h4">
+	                    <h4>{{ owner.username }}</h4>
+	            </div>
+                    <div class="col-md-12 col-sm-12 col-xs-12" id="h33">
+                        <a href="{% url 'posts:post_detail' username=owner.username postid=post.id %}" class="post-content">
+                            <h3>{{ post.title|title }}</h3>
+                            <p>{{ post.description|linebreaksbr }}</p>
+                        </a>
+                        {% if post.code_link is not None and post.code_link != '' %}
+                        <a href="{{ post.code_link }}" style="float:right;" target="_blank">Source Code</a>
+                        {% endif %}
+                    </div>
+	            <div class="col-md-12 col-sm-12 col-xs-12" id="h11">
+	                <div class="autoplay">
+                <div>
+                    {% if f1 == 'img' %}
+                        <img src="{{ post.file1.url }}" class="img-responsive" alt="project image">
+                        {% elif f1 == 'video' %}
+                        <video width="100%" height="100%" controls preload="auto">
+                            <source src="{{ post.file1.url }}">
+                            Video unsupported
+                        </video>
+                        {% else %}
+                            <img src="https://via.placeholder.com/250.webp?text=Image" class="img-responsive" alt="project image">
+                    {% endif %}
+                </div>
+                 {% if f2 is not None %}
+                    <div>
+                        {% if f2 == 'img' %}
+                            <img src="{{ post.file2.url }}" alt="project image">
+                        {% elif f2 == 'video' %}
+                            <video width="100%" height="100%" controls preload="auto">
+                                <source src="{{ post.file2.url }}">
+                                Video unsupported
+                            </video>
+                        {% endif %}
+                    </div>
+                  {% endif %}
+                 {% if f3 is not None %}
+                    <div>
+                            {% if f3 == 'img' %}
+                                <img src="{{ post.file3.url }}" alt="project image">
+                            {% elif f3 == 'video' %}
+                                <video width="100%" height="100%" controls preload="auto">
+                                    <source src="{{ post.file3.url }}">
+                                    Video unsupported
+                                </video>
+                            {% endif %}
+                    </div>
+                 {% endif %}
+
+	                </div>
+	            </div>
+	            <div class="col-md-12 col-sm-12 col-xs-12" id="h41">
+	                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-hand-thumbs-up like-btn" fill="currentColor" xmlns="http://www.w3.org/2000/svg" data-id= {{ post.id }} data-href="{% url 'posts:post_like' username=owner.username postid=post.pk %}">
+                    <path fill-rule="evenodd" d="M6.956 1.745C7.021.81 7.908.087 8.864.325l.261.066c.463.116.874.456 1.012.965.22.816.533 2.511.062 4.51a9.84 9.84 0 0 1 .443-.051c.713-.065 1.669-.072 2.516.21.518.173.994.681 1.2 1.273.184.532.16 1.162-.234 1.733.058.119.103.242.138.363.077.27.113.567.113.856 0 .289-.036.586-.113.856-.039.135-.09.273-.16.404.169.387.107.819-.003 1.148a3.163 3.163 0 0 1-.488.901c.054.152.076.312.076.465 0 .305-.089.625-.253.912C13.1 15.522 12.437 16 11.5 16v-1c.563 0 .901-.272 1.066-.56a.865.865 0 0 0 .121-.416c0-.12-.035-.165-.04-.17l-.354-.354.353-.354c.202-.201.407-.511.505-.804.104-.312.043-.441-.005-.488l-.353-.354.353-.354c.043-.042.105-.14.154-.315.048-.167.075-.37.075-.581 0-.211-.027-.414-.075-.581-.05-.174-.111-.273-.154-.315L12.793 9l.353-.354c.353-.352.373-.713.267-1.02-.122-.35-.396-.593-.571-.652-.653-.217-1.447-.224-2.11-.164a8.907 8.907 0 0 0-1.094.171l-.014.003-.003.001a.5.5 0 0 1-.595-.643 8.34 8.34 0 0 0 .145-4.726c-.03-.111-.128-.215-.288-.255l-.262-.065c-.306-.077-.642.156-.667.518-.075 1.082-.239 2.15-.482 2.85-.174.502-.603 1.268-1.238 1.977-.637.712-1.519 1.41-2.614 1.708-.394.108-.62.396-.62.65v4.002c0 .26.22.515.553.55 1.293.137 1.936.53 2.491.868l.04.025c.27.164.495.296.776.393.277.095.63.163 1.14.163h3.5v1H8c-.605 0-1.07-.081-1.466-.218a4.82 4.82 0 0 1-.97-.484l-.048-.03c-.504-.307-.999-.609-2.068-.722C2.682 14.464 2 13.846 2 13V9c0-.85.685-1.432 1.357-1.615.849-.232 1.574-.787 2.132-1.41.56-.627.914-1.28 1.039-1.639.199-.575.356-1.539.428-2.59z"/>
+                    </svg>&nbsp;<span id="blikes-{{ post.id }}">{{ post.total_likes }}</span>
+                    &nbsp; &nbsp;
+                    <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-chat-left-text-fill icons" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H4.414a1 1 0 0 0-.707.293L.854 15.146A.5.5 0 0 1 0 14.793V2zm3.5 1a.5.5 0 0 0 0 1h9a.5.5 0 0 0 0-1h-9zm0 2.5a.5.5 0 0 0 0 1h9a.5.5 0 0 0 0-1h-9zm0 2.5a.5.5 0 0 0 0 1h5a.5.5 0 0 0 0-1h-5z"/>
+                    </svg>&nbsp;{{ post.total_comments }}
+
+	            </div>
+                {% endwith %}
+        	</div>
+            {% endfor %}
+            {% else %}
+                <div class="left-post">No Projects to Show :(</div>
+            {% endif %}
+    	</div>
+    	<main id="explore" class="col-lg-4 col-md-4 col-sm-4">
+	        <ul class="explore__users">
+                {% for acc in recommendation %}
+	            <li class="explore__user">
+                    <a href="{% url 'posts:accounts_main' username=acc.username %}" style="text-decoration:none;display:block;color: #212529;">
+                    <div class="explore__user-column" id="user-recommend">
+	                    <img src="{{ acc.profile_pic.url }}" class="explore__avatar" />
+	                    <div class="explore__info">
+	                        <span class="explore__username">{{ acc.username }}</span>
+<!--	                        <span class="explore__full-name">Lynn Park</span>-->
+	                    </div>
+
+	                </div>
+                    </a>
+	                <div class="explore__user-column">
+	                    <button class="follow-toggle" data-href="{% url 'posts:accounts_follow' username=acc.username %}">Follow</button>
+	                </div>
+	            </li>
+	            {% endfor %}
+	        </ul>
+    	</main>
+    </div>
+    </div>
+    <footer>
+        <div class="row">
+            <div class="col span-1-of-2">
+                <ul class="footer-nav">
+                    <li><a href="#">2020 Prockit, Inc</a></li>
+                    <li><a href="#">Terms $ Conditions</a></li>
+                    <li><a href="#">Privacy</a></li>
+                    <li><a href="#">Site Map</a></li>
+                    <li><a href="#">Android App</a></li>
+                </ul>
+            </div>
+            <div class="col span-1-of-2">
+                <ul class="social-links">
+                    <li><a href="#"><i class="fab fa-facebook-square"></i></a></li>
+                    <li><a href="#"><i class="fab fa-twitter-square"></i></a></li>
+                    <li><a href="#"><i class="fab fa-google-plus-square"></i></a></li>
+                    <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+    <script type="text/javascript">
+
+
+        $(document).ready(function(){
+        $('.autoplay').slick({
+        infinite:true,
+        slidesToShow:1,
+        pauseOnHover:true,
+        });
+    });
+    </script>
+
+
+    <script>
+        $(window).on("scroll", function() {
+            if ($(window).scrollTop()) {
+                $('nav').addClass('black');
+            } else {
+                $('nav').removeClass('black');
+            }
+        });
+
+
+        $(document).ready(function() {
+
+            $('.js--nav-icon').click(function() {
+
+                var nav = $('.js--main-nav');
+
+                nav.slideToggle();
+
+            });
+
+        });
+        $('.like-btn').click(function(e){
+        e.preventDefault();
+        this_ = $(this);
+        let likeurl = this_.attr('data-href');
+        let postid = this_.attr('data-id');
+        let bid = '#blikes-' + postid;
+        let likecount = parseInt($(bid).text());
+        $.ajax({
+            url: likeurl,
+            method: 'GET',
+            data: {},
+            success: function(data){
+                if (data.liked && data.updated){
+                    $(bid).text(likecount +1);
+                }
+                else if (! data.liked && data.updated){
+                    $(bid).text(likecount -1);
+                }
+            },
+            error: function(error){
+                console.log(error);
+            }
+        });
+    });
+
+        $('.follow-toggle').click(function(e){
+            e.preventDefault();
+            let this_ = $(this);
+            let followurl = this_.attr('data-href');
+            $.ajax({
+            url: followurl,
+            method: 'GET',
+            data: {},
+            success: function(data){
+                if (data.followed && data.updated){
+                    $(this_).text('Unfollow');
+                }
+                else if (! data.followed && data.updated){
+                    $(this_).text('Follow');
+                }
+            },
+            error: function(error){
+                console.log(error);
+            }
+        });
+        });
+    </script>
+</body>
+</html>

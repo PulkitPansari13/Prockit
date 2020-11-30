@@ -140,9 +140,11 @@ header {
     max-width: 100%;
 }
 
-
-
-
+.post-content {
+display: block;
+text-decoration: none !important;
+/*color: black;*/
+}
 
 .betters img {
     width: 100%;

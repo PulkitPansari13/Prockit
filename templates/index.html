@@ -120,7 +120,7 @@
                 <div class="col-md-6 col-sm-12 col-xs-12 forms">
                     <div class="b1">
                     <div class="imgcontainer">
-                    <img src="images/login.jfif" class="ava">
+                    <img src="{% static 'images/login.jfif' %}" class="ava">
                     </div>
                     <form method="post" action="{% url 'login' %}">
                         {% csrf_token %}
