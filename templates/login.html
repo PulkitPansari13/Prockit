@@ -74,7 +74,7 @@ body {
 
 <div class="wrapper">
 
-<form class="form-signin" method="post">
+<form class="form-signin" method="post" id="login-form">
   <h2 class="form-signin-heading text-center">Prockit</h2>
   {% csrf_token %}
   {% if form.errors %}
@@ -83,8 +83,8 @@ body {
     </div>
   {% endif %}
 
-  <input type="text" class="form-control" name="username" placeholder="Username" id="user_login"required>
-   <input type="password" class="form-control" name="password" placeholder="Password" id="pass_login" required>             
+  <input type="text" class="form-control" name="username" placeholder="Username" id="id_username" required>
+   <input type="password" class="form-control" name="password" placeholder="Password" id="id_password" required>
 <!--  <p>Make sure it's at least 15 characters OR at least 8 characters including a number and a lowercase letter.</p>-->
 
   <button class="btn btn-lg form-control" type="submit">Login</button>

@@ -28,8 +28,8 @@ def signup(request):
     if request.method == 'POST':
         form = UserCreateForm(request.POST)
         if form.is_valid():
-            user = form.save()
-            user.set_password(form.cleaned_data.get('password'))
+            user = form.save(commit=False)
+            user.set_password(form.cleaned_data.get('password1'))
             user.save()
             login(request, user)
             return redirect('posts:accounts_main', username=user.username)
@@ -42,7 +42,7 @@ def user_login(request):
     if request.user.is_authenticated:
         return redirect('posts:accounts_main', username=request.user.username)
     if request.method == 'POST':
-        form = AuthenticationForm(request=request, data=request.POST)
+        form = AuthenticationForm(request, data=request.POST)
         if form.is_valid():
             username = form.cleaned_data.get('username')
             password = form.cleaned_data.get('password')
