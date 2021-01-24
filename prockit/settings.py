@@ -16,6 +16,7 @@ import os
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 TEMPLATE_DIR = os.path.join(BASE_DIR, 'templates')
 STATIC_DIR = os.path.join(BASE_DIR, 'static')
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 File_Pond = os.path.join(BASE_DIR, 'filepond')
 
@@ -29,9 +30,9 @@ DJANGO_DRF_FILEPOND_FILE_STORE_PATH = os.path.join(File_Pond, 'stored-uploads')
 SECRET_KEY = 'tvg7y(d^s(=_@mv-i9g2c4-(gstg+uz%1^&zf33uf0r788bkwm'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['prockit.eu.pythonanywhere.com']
 
 
 # Application definition
