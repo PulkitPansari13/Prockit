@@ -5,8 +5,8 @@
 <div class="container">
             <div class="row">
                 <div class="col-md-6 col-sm-12 col-xs-12 centers">
-                    <p class="pros">A better way to work together.</p>
-                    <p class="pross">Prockit brings people together to share their projects,  work through problems, move ideas forward, and learn from each other along the way.</p>
+                    <p class="pros">Built Some Projects? Share it with everyone.</p>
+                    <p class="pross">Let the world know about your hordwork and gain meaningful insights in the process! </p>
                 </div>
 
                 <div class="col-md-5 col-sm-8 col-xs-8 col-xss-8 center">
@@ -21,11 +21,11 @@
                         </div>
 
                         <div class="text-field">
-                        <input type="password" name="password" placeholder="Password" class="form-control" required>
+                        <input type="password" name="password1" placeholder="Password" class="form-control" required>
                         </div>
 
                         <div class="pass">
-                        <p>Make sure it's at least 15 characters OR at least 8 characters including a number and a lowercase letter.</p>
+                        <!--<p>Make sure it's at least 15 characters OR at least 8 characters including a number and a lowercase letter.</p>-->
                         </div>
                         <input type="submit" class="form-control submit" value="Sign up for Prockit">
                         <p>By clicking “Sign up for Prockit”, you agree to our Terms of Service and Privacy Statement. </p>
@@ -43,10 +43,10 @@
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="autoplay">
-               <div><img src="images/m4.jpg" class="img-responsive"></div>
-              <div><img src="images/m7.jpg"  class="img-responsive"></div>
-              <div><img src="images/l7.jfif" class="img-responsive"></div>
-              <div><img src="images/l2.jfif" class="img-responsive"></div>
+               <div><img src="{% static 'images/recentproj1.webp' %}" class="img-responsive"></div>
+              <div><img src="{% static 'images/recentproj2.webp' %}"  class="img-responsive"></div>
+              <div><img src="{% static 'images/recentproj3.webp' %}" class="img-responsive"></div>
+              <!--<div><img src="images/l2.jfif" class="img-responsive"></div>-->
             </div>
             </div>
         </div>
@@ -60,7 +60,7 @@
             <div class="row">
                 <div class="col-md-6 col-sm-12 col-xs-12">
                     <div class="b4">
-                    <img src="images/m5.png">
+                    <img src="{%static 'images/m5.png' %}">
                     </div>
                 </div>
                 <div class="col-md-6 col-sm-12 col-xs-12">
@@ -85,19 +85,19 @@
                 <div class="row">
                     <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
 
-                        <img src="images/l8.jfif" class="img-responsive">
+                        <img src="{% static 'images/l8.jfif' %}" class="img-responsive">
                         <p>Forum is the place where you can talk about different projects with fellow members</p>
 
                     </div>
                     <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
 
-                        <img src="images/m9.png" class="img-responsive">
+                        <img src="{% static 'images/m9.png' %}" class="img-responsive">
                         <p>Data remains protected at all times and your security is our priority</p>
 
                     </div>
                     <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
 
-                        <img src="images/m3.jfif" class="img-responsive">
+                        <img src="{% static 'images/m3.jfif' %}" class="img-responsive">
                         <p>All projects at one place can be accessed easily.</p>
 
                     </div>
@@ -113,7 +113,7 @@
             <div class="row no-gutters">
                 <div class="col-md-6 col-sm-0 col-xs-0">
                     <div class="b1">
-                    <img src="images/comp.png" class="img-fluid ">
+                    <img src="{% static 'images/loginhero.svg' %}" class="img-fluid ">
                     </div>
                 </div>
 

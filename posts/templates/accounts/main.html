@@ -13,9 +13,9 @@
     {% endblock %}
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 
-    
+
     <link href="http://fonts.googleapis.com/css?family=Lato:100,300,400,300italic" rel="stylesheet" type="text/css">
-    
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" integrity="sha384-3AB7yXWz4OeoZcPbieVW64vVXEwADiYyAEhwilzWsLw+9FgqpyjjStpPnpBO8o8S" crossorigin="anonymous">
 
@@ -28,31 +28,31 @@
     <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 </head>
-    
+
 
 
 <body>
       <header>
        <nav>
             <img class="logo" src="{% static 'images/logo.png' %}">
-            <p class="pro">Prockit</p> 
-            
+            <p class="pro"><a href="{% url 'index' %}" style="text-decoration:none;color:white;">Prockit</a></p>
+
         <div class="menu">
             <ul class="js--main-nav">
             <li><a href="{% url 'posts:post_create' username=user.username %}">Add Project</li>
 <!--            <li><a href="#">Forums</a></li>-->
-            
+
             <li><a href="{% url 'logout' %}">Logout</a></li>
             <a href="{% url 'posts:feed' username=user.username %}" class="navigation__link">
                 <i class="fa fa-compass fa-lg" style="color: white"></i>
             </a>
             </ul>
             <a class="mobile-nav-icon js--nav-icon"><i class="fa fa-navicon"></i></a>
-            
+
         </div>
         </nav>
     </header>
-   
+
    {% block body_block %}
     <main id="profile">
         <div class="profile__header">
@@ -213,7 +213,7 @@
 
 
         </script>
-    
+
 </body>
 {% block afer_body %}
 {% endblock %}

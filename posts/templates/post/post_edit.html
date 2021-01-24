@@ -122,7 +122,7 @@ FilePond.registerPlugin(FilePondPluginImagePreview);
 FilePond.registerPlugin(FilePondPluginFileValidateType);
 FilePond.setOptions({
     server: {
-        url: 'http://localhost:8000/',
+        url: '/',
         process: 'fp/process/',
         patch: 'fp/patch/',
         revert: 'fp/revert/',
@@ -141,7 +141,6 @@ const pond = FilePond.create( inputElement,{
   maxFiles: 3,
   required: true,
   credits: false,
-  acceptedFileTypes: ['image/*', 'video/*'],
   files: [
         {% for url in posturls  %}
         {
@@ -151,7 +150,9 @@ const pond = FilePond.create( inputElement,{
 
         },
         {% endfor %}
-    ]
+    ],
+  acceptedFileTypes: ['image/*', 'video/*'],
+
   });
 </script>
 </body>

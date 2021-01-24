@@ -36,6 +36,8 @@
     {% endblock %}
 </head>
 <body>
+    <!--<li><a href="#">Forums</a></li>-->
+            <!--<li><a href="#contact">Contact</a></li>-->
     <header>
         <nav>
             <img class="logo" src="{% static 'images/logo.png' %}">
@@ -43,11 +45,10 @@
         <div class="menu">
             <ul class="js--main-nav">
             <li><a href="#">Projects</a></li>
-            <li><a href="#">Forums</a></li>
-            <li><a href="#contact">Contact</a></li>
+
             <li><a href="#features">Features</a></li>
             <li><a href="#login">Login</a></li>
-            <li><a href="register.html">Register</a></li>
+            <li><a href="{% url 'signup' %}">Register</a></li>
             </ul>
             <a class="mobile-nav-icon js--nav-icon"><i class="fa fa-navicon"></i></a>
 
