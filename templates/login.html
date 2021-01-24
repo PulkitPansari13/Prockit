@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
 <head>
   <meta charset="utf-8">
@@ -7,24 +8,26 @@
   <link href="http://fonts.googleapis.com/css?family=Lato:100,300,400,300italic" rel="stylesheet" type="text/css">
 
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-  <link href='https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/ui-lightness/jquery-ui.css'rel='stylesheet'> 
+  <link href='https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/ui-lightness/jquery-ui.css'rel='stylesheet'>
   <script src= "https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js" ></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script> 
+  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  <script src="https://kit.fontawesome.com/770f03bd3d.js" crossorigin="anonymous"></script>
+
 <style type="text/css">
 body {
   font-family: 'Lato', 'Arial', sans-serif;
   background-position: center center;
   background-size: cover;
-    
+
 }
 .wrapper {
   margin: 80px;
 }
-    h2{
+h2{
         padding-bottom: 10px;
-    }
+}
 .form-signin {
   max-width: 410px;
   margin: 0 auto;
@@ -42,32 +45,46 @@ body {
 .form-signin .form-control {
   padding: 10px;
 }
- p {
-     font-size: 15px; 
+p{
+     font-size: 15px;
      color: #b9b4b4;
-    }
-    
-    p:last-child{
+}
+
+p:last-child{
         padding-top: 14px;
-    }
-    .btn {
+}
+.btn {
         color: #fff;
         background-color: #e67e22;
         border-radius: 25px;
-    }
-    
-    .btn:hover {
+}
+
+.btn:hover {
     background-color: #cf6d17;
     opacity: 1;
 }
-    
-    
+
+
     @media screen and (max-width:550px){
         p{
             font-size: 13px;
         }
     }
-    
+
+</style>
+<link rel="stylesheet" href="{% static 'css/bootstrap-social.css' %}">
+<style>
+.git-login>:first-child{
+  left: 5px;
+  top: 3px;
+  border-right: none;
+}
+.git-login{
+  display: block;
+  margin: 5px auto;
+  width: 70%;
+  text-align: center;
+}
 </style>
 </head>
 <body>
@@ -88,13 +105,17 @@ body {
 <!--  <p>Make sure it's at least 15 characters OR at least 8 characters including a number and a lowercase letter.</p>-->
 
   <button class="btn btn-lg form-control" type="submit">Login</button>
-    
+  <h6 style="text-align: center; margin: 8px;">OR</h6>
+  <a href="/allauth/github/login/?process=login" class="btn btn-social btn-github git-login">
+    <span class="fa fa-github"></span>
+    Login with GitHub
+  </a>
+
 
 </form>
 
 </div>
 
-    
 
 </body>
 </html>
