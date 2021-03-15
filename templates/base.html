@@ -34,6 +34,48 @@
     {% block link %}
 
     {% endblock %}
+    <style>
+        header{
+            background-color: #f3f9fb;
+            background-image: none;
+        }
+        nav{
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+            background-color: #6743a6f7;
+            box-shadow: 0px 3px 10px rgb(0 0 0 / 25%);
+        }
+        .pros{
+            color: initial;
+        }
+        pross{
+            color:#9b9494;
+        }
+        .center{
+            box-shadow: 0px 3px 10px rgb(0 0 0 / 25%);
+            background: white;
+        }
+        .log .row{
+            box-shadow: 1px 1px 12px grey;
+        }
+    </style>
+    <link rel="stylesheet" href="{% static 'css/bootstrap-social.css' %}">
+<style>
+.git-login>:first-child{
+  left: 5px;
+  top: 3px;
+  border-right: none;
+}
+.git-login{
+  display: block;
+  margin: 5px auto;
+  width: 70%;
+  text-align: center;
+}
+.fa.fa-github {
+    font-family: "Font Awesome 5 Brands";
+    font-weight: 400;
+</style>
 </head>
 <body>
     <!--<li><a href="#">Forums</a></li>-->
@@ -44,10 +86,10 @@
             <p class="pro">Prockit</p>
         <div class="menu">
             <ul class="js--main-nav">
-            <li><a href="#">Projects</a></li>
+            <li><a href="#projects">Projects</a></li>
 
             <li><a href="#features">Features</a></li>
-            <li><a href="#login">Login</a></li>
+            <li><a href="{% url 'login' %}">Login</a></li>
             <li><a href="{% url 'signup' %}">Register</a></li>
             </ul>
             <a class="mobile-nav-icon js--nav-icon"><i class="fa fa-navicon"></i></a>
@@ -102,40 +144,18 @@
         });
     });
 
-        $(document).ready(function(){
-        $(".log").hover(function(){
+    $(document).ready(function(){
          $(".b1").fadeIn("slow");
-    });
-});
-        $(document).ready(function(){
-        $(".better").hover(function(){
         $(".b4").slideDown("slow");
+    $('.js--nav-icon').click(function() {
+
+        var nav = $('.js--main-nav');
+
+        nav.slideToggle();
+
     });
-});
 
-
-        $(window).on("scroll", function() {
-                if($(window).scrollTop()) {
-                    $('nav').addClass('black');
-                }
-
-                else {
-                    $('nav').removeClass('black');
-                }
-            });
-
-
-                $(document).ready(function(){
-
-                $('.js--nav-icon').click(function() {
-
-                    var nav = $('.js--main-nav');
-
-                    nav.slideToggle();
-
-                });
-
-                    })
+        })
 
 
     </script>

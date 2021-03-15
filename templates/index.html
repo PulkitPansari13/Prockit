@@ -5,7 +5,7 @@
 <div class="container">
             <div class="row">
                 <div class="col-md-6 col-sm-12 col-xs-12 centers">
-                    <p class="pros">Built Some Projects? Share it with everyone.</p>
+                    <p class="pros">Built Some&nbsp;Projects? Share it with everyone.</p>
                     <p class="pross">Let the world know about your hordwork and gain meaningful insights in the process! </p>
                 </div>
 
@@ -65,10 +65,10 @@
                 </div>
                 <div class="col-md-6 col-sm-12 col-xs-12">
                     <div class="b4">
-                    <p>Developers use Prockit for displaying their personal projects,
-                        and sharing them with friends.<br> <br> <br>
-                        Our features help you to express yourself and connect with the people.<br> <br> <br>
-                        Discover original content from Creators you already love,or new accounts you might like.</p>
+                    <p>Use Prockit to display your personal projects,
+                        and share them with your friends.<br> <br> <br>
+                        Express yourself and connect with the people.<br> <br> <br>
+                        Look what others made and gain useful insights in the process. </p>
                     </div>
                 </div>
             </div>
@@ -79,39 +79,39 @@
 
 
 
-    <section class="best">
+<!--    <section class="best">-->
 
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+<!--            <div class="container">-->
+<!--                <div class="row">-->
+<!--                    <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">-->
 
-                        <img src="{% static 'images/l8.jfif' %}" class="img-responsive">
-                        <p>Forum is the place where you can talk about different projects with fellow members</p>
+<!--                        <img src="{% static 'images/l8.jfif' %}" class="img-responsive">-->
+<!--                        <p>Forum is the place where you can talk about different projects with fellow members</p>-->
 
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+<!--                    </div>-->
+<!--                    <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">-->
 
-                        <img src="{% static 'images/m9.png' %}" class="img-responsive">
-                        <p>Data remains protected at all times and your security is our priority</p>
+<!--                        <img src="{% static 'images/m9.png' %}" class="img-responsive">-->
+<!--                        <p>Data remains protected at all times and your security is our priority</p>-->
 
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+<!--                    </div>-->
+<!--                    <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">-->
 
-                        <img src="{% static 'images/m3.jfif' %}" class="img-responsive">
-                        <p>All projects at one place can be accessed easily.</p>
+<!--                        <img src="{% static 'images/m3.jfif' %}" class="img-responsive">-->
+<!--                        <p>All projects at one place can be accessed easily.</p>-->
 
-                    </div>
-                </div>
-            </div>
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
 
 
-      </section>
+<!--      </section>-->
 
     <section class="log" id="login">
         <h2>Login</h2><br><br>
         <div class="container">
             <div class="row no-gutters">
-                <div class="col-md-6 col-sm-0 col-xs-0">
+                <div class="col-md-6 col-sm-0 col-xs-0" style="display:flex;">
                     <div class="b1">
                     <img src="{% static 'images/loginhero.svg' %}" class="img-fluid ">
                     </div>
@@ -127,7 +127,12 @@
                          <input type="text" name="username" placeholder="Username" class="form-control" required>
                          <input type="password" name="password" placeholder="Password" class="form-control" required>
                          <input type="submit" class="form-control submit" value="Login">
-                         <a href="#">Forget Password</a>
+                            <h6 style="text-align: center; margin: 8px;">OR</h6>
+                         <a href="/allauth/github/login/?process=login" class="btn btn-social btn-github git-login">
+                            <span class="fa fa-github"></span>
+                            Login with GitHub
+                         </a>
+                         <a href="#">Forgot Password ?</a>
                          <p>Don't have an account? <a href="{% url 'signup' %}">Register here</a></p>
                     </form>
                 </div>
