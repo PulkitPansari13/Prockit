@@ -31,7 +31,7 @@ def signup(request):
             user = form.save(commit=False)
             user.set_password(form.cleaned_data.get('password1'))
             user.save()
-            login(request, user)
+            login(request, user,backend='django.contrib.auth.backends.ModelBackend')
             return redirect('posts:accounts_main', username=user.username)
     else:
         form = UserCreateForm()
@@ -48,7 +48,7 @@ def user_login(request):
             password = form.cleaned_data.get('password')
             user = authenticate(username=username, password=password)
             if user:
-                login(request, user)
+                login(request, user,backend='django.contrib.auth.backends.ModelBackend')
                 return redirect('posts:accounts_main', username=username)
     else:
         form = AuthenticationForm()

@@ -10,7 +10,7 @@
                 </div>
 
                 <div class="col-md-5 col-sm-8 col-xs-8 col-xss-8 center">
-                    <form method="post" action="{% url 'signup' %}">
+                    <form method="post" action="{% url 'signup' %}" id="herosignup">
                         {% csrf_token %}
                         <div class="text-field">
                         <input type="text" name="username" placeholder="Username" class="form-control" required>
@@ -21,9 +21,9 @@
                         </div>
 
                         <div class="text-field">
-                        <input type="password" name="password1" placeholder="Password" class="form-control" required>
+                        <input type="password" name="password1" placeholder="Password" class="form-control" required id="pass1">
+                        <input type="password" name="password2" style="display:none;" id="pass2">
                         </div>
-
                         <div class="pass">
                         <!--<p>Make sure it's at least 15 characters OR at least 8 characters including a number and a lowercase letter.</p>-->
                         </div>
