@@ -6,8 +6,8 @@
 <style>
 
     .filepond--root{
-        height: 15em;
-        width : 50%;
+        height: 6rem;
+        width : 6rem;
     }
     .filepond--credits{
         display: none;
@@ -22,49 +22,57 @@
 {% block body_block %}
     <main id="edit-profile">
         <div class="edit-profile__container">
-            <div class="edit-profile__header">
-                <div class="edit-profile__avatar-container">
-<!--                    <img src="" class="edit-profile__avatar" />-->
-                <b>USERNAME: </b>
-                </div>
-                <h4 class="edit-profile__username">{{ user.username }}</h4>
-            </div>
+
             <form action="" class="edit-profile__form" method="post">
                 {% csrf_token %}
-                <div class="form__row">
+                <div class="edit-profile__header" >
+                    <div class="edit-profile__avatar-container">
+    <!--                    <img src="" class="edit-profile__avatar" />-->
+                        <div style="display:flex;justify-content:center;">
+                            <input type="file" name="filepond">
+                        </div>
+                        <b>Username: {{ user.username }}</b>
+                    </div>
+<!--                    <h4 class="edit-profile__username"></h4>-->
+                </div>
+                <div class="form-group">
                     <label for="{{ form.first_name.id_for_label }}" class="form__label">First Name:</label>
-                    {% render_field form.first_name class='form_input' %}
+                    {% render_field form.first_name class='form-control' %}
                       <div class="form-group has-errors text-danger small">
                                 {{form.first_name.errors}}
                       </div>
                 </div>
-                <div class="form__row">
+                <div class="form-group">
                     <label for="{{ form.last_name.id_for_label }}" class="form__label">Last Name:</label>
-                    {% render_field form.last_name class='form_input' %}
+                    {% render_field form.last_name class='form-control' %}
                       <div class="form-group has-errors text-danger small">
                                 {{form.last_name.errors}}
                       </div>
                 </div>
-                <div class="form__row">
+                <div class="form-group">
                     <label for="{{ form.email.id_for_label }}" class="form__label">Email:</label>
-                    {% render_field form.email placeholder='Email Address' class='form__input' %}
+                    {% render_field form.email placeholder='Email Address' class='form-control' %}
                       <div class="form-group has-errors text-danger small">
                                 {{form.email.errors}}
                       </div>
                 </div>
-                <div class="form__row">
+                <div class="form-group">
                     <label for="{{ form.bio.id_for_label }}" class="form__label">Bio:</label>
-                    {% render_field form.bio style="resize:none;" rows="6" %}
+                    {% render_field form.bio style="resize:none;" rows="5" class='form-control' %}
                       <div class="form-group has-errors text-danger small">
                                 {{form.bio.errors}}
                       </div>
                 </div>
-                <div class="form__row">
-                    <label for="filepond" class="form__label">Profile_pic:</label>
-                    <input type="file" name="filepond">
+                <div class="form-group">
+<!--                    <label for="filepond" class="form__label">Profile_pic:</label>-->
+<!--                    <div style="display:flex;justify-content:center;">-->
+<!--                    <input type="file" name="filepond">-->
+<!--                    </div>-->
                 </div>
-                <input type="submit" value="Submit">
+                <div class="form-group submit-btns">
+                <input type="submit" value="Submit" class="btn btn-primary">
                 <input type="button" class="btn btn-secondary" onclick="window.location.href='{% url 'posts:accounts_main' username=user.username %}';" value="Cancel" />
+                </div>
             </form>
         </div>
     </main>
@@ -98,6 +106,11 @@ const inputElement = document.querySelector('input[type="file"]');
 // create a FilePond instance at the input element location
 const pond = FilePond.create( inputElement,{
   allowMultiple: false,
+  stylePanelLayout: 'compact circle',
+  styleLoadIndicatorPosition: 'center bottom',
+  styleProgressIndicatorPosition: 'center bottom',
+  styleButtonProcessItemPosition: 'center bottom',
+  styleButtonRemoveItemPosition: 'center top',
   acceptedFileTypes: ['image/*'],
   files: [
         {

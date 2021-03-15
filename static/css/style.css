@@ -15,7 +15,6 @@ body {
 }
 
 header {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(/bg.jpg);
     background-size: cover;
     background-position: center;
     height: 100vh;
@@ -524,7 +523,7 @@ nav.black .logo {
 
 
 .contact {
-    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),url(/apple.png);
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));
     background-size: cover;
     background-position: center;
     text-align: center;
