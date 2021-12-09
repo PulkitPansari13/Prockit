@@ -26,10 +26,10 @@ DJANGO_DRF_FILEPOND_FILE_STORE_PATH = os.path.join(File_Pond, 'stored-uploads')
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
+# SECURITY WARNING: keep the secret key used in production secret
 SECRET_KEY = 'tvg7y(d^s(=_@mv-i9g2c4-(gstg+uz%1^&zf33uf0r788bkwm'
 
-# SECURITY WARNING: don't run with debug turned on in production!
+# SECURITY WARNING: don't run with debug turned on in production
 DEBUG = False
 
 ALLOWED_HOSTS = ['prockit.eu.pythonanywhere.com']
